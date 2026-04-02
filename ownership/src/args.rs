@@ -34,9 +34,9 @@ pub struct ContactCommand {
 #[derive(Debug, Subcommand)]
 pub enum ContactSubcommand {
     Create(CreateContact),
+    Show,
     //Update(UpdateContact),
     //Delete(DeleteContact),
-    //Show,
 }
 
 #[derive(Debug, Args)]
