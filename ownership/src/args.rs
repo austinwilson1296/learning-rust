@@ -1,6 +1,17 @@
 use clap::{Args, Parser, Subcommand};
 
+use clap::builder::styling::{AnsiColor, Effects, Styles};
+
+fn get_styles() -> Styles {
+    Styles::styled()
+        .header(AnsiColor::Yellow.on_default() | Effects::BOLD)
+        .usage(AnsiColor::Green.on_default() | Effects::BOLD)
+        .literal(AnsiColor::Cyan.on_default())
+        .placeholder(AnsiColor::Cyan.on_default())
+}
+
 #[derive(Debug, Parser)]
+#[command(styles = get_styles())]
 #[clap(author, version, about)]
 
 pub struct ContactAppArgs {
