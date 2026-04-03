@@ -35,5 +35,18 @@ pub fn handle_contact_command(conn: Connection, c: ContactCommand) {
                 println!("---------------------");
             }
         }
+        ContactSubcommand::Delete(c) => {
+            let delete_contact_query = format!(
+                "DELETE FROM contacts WHERE first_name='{}' AND last_name='{}'",
+                c.first_name, c.last_name
+            );
+            match conn.execute(delete_contact_query) {
+                Ok(_) => println!(
+                    "Contact {} {} removed from CONTACTY!",
+                    c.first_name, c.last_name
+                ),
+                Err(e) => println!("Error: {}", e),
+            }
+        }
     }
 }

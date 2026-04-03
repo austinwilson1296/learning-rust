@@ -35,8 +35,8 @@ pub struct ContactCommand {
 pub enum ContactSubcommand {
     Create(CreateContact),
     Show,
+    Delete(DeleteContact),
     //Update(UpdateContact),
-    //Delete(DeleteContact),
 }
 
 #[derive(Debug, Args)]
@@ -44,4 +44,10 @@ pub struct CreateContact {
     pub first_name: String,
     pub last_name: String,
     pub phone_number: String,
+}
+
+#[derive(Debug, Args)]
+pub struct DeleteContact {
+    pub first_name: String,
+    pub last_name: String,
 }
